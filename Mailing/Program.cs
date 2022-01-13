@@ -21,13 +21,13 @@ namespace Mailing
         {
 
             MailAddress from = new MailAddress("sendtestmessages@gmail.com", "Тест рассылки");
-            MailAddress to = new MailAddress("yura@bitservice.ua");
+            MailAddress to = new MailAddress("test@gmail.com");
             MailMessage m = new MailMessage(from, to);
             m.Subject = "Тема тестовой рассылки: ";
             m.Body = ("Тестовая рассылка: ");
             m.IsBodyHtml = true;
             SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-            smtp.Credentials = new NetworkCredential("sendtestmessages@gmail.com", "Password");
+            smtp.Credentials = new NetworkCredential("sendtestmessages@gmail.com", "1z2x3c_0o");
             smtp.EnableSsl = true;
             smtp.Send(m);
 
