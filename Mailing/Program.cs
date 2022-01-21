@@ -11,6 +11,7 @@ using System.IO;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Diagnostics;
 
 namespace Mailing
 {  
@@ -70,11 +71,11 @@ namespace Mailing
                         m.Body = ("Тестовая рассылка: ");
                         m.IsBodyHtml = true;
                         SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-                        smtp.Credentials = new NetworkCredential("sendtestmessages@gmail.com", "Password");
+                        smtp.Credentials = new NetworkCredential("sendtestmessages@gmail.com", "1z2x3c_0o");
                         smtp.EnableSsl = true;
                         smtp.Send(m);
                     }
-
+                 
                     nextAddress++;
 
                 }
@@ -86,6 +87,14 @@ namespace Mailing
                         byte[] info = new UTF8Encoding(true).GetBytes("\n" + DateTime.Now + ": Рассылка успешно выполнена.");
                         log.Write(info, 0, info.Length);
                     }
+
+                    Process[] List;
+                    List = Process.GetProcessesByName("EXCEL");
+                    foreach (var process in List)
+                    {
+                        process.Kill();
+                    }
+
                     return;
                 }
             }
@@ -93,8 +102,9 @@ namespace Mailing
             {
                 using (FileStream log = new FileStream(patchLog, FileMode.Append, FileAccess.Write))
                 {
-                    byte[] info = new UTF8Encoding(true).GetBytes("\n" + DateTime.Now + ": Файл с именем mails.xlsx отсутствует или не удлаось открыть.");
+                    byte[] info = new UTF8Encoding(true).GetBytes("\n" + DateTime.Now + ": Файл отсутствует илизанят другим процессом.");
                     log.Write(info, 0, info.Length);
+
 
                     return;
                 }
