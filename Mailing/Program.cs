@@ -125,7 +125,7 @@ namespace Mailing
                 MailingStatus.fileIsMessing();
 
                 return;   
-                //test
+                
             }          
         }
     }
