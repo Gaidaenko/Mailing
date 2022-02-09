@@ -124,7 +124,8 @@ namespace Mailing
             {
                 MailingStatus.fileIsMessing();
 
-                return;               
+                return;   
+                //test
             }          
         }
     }
